@@ -17,11 +17,8 @@ MainFuncs = {
     end,
 
     PlayAnimation = function(Prop, Anim)
-        -- TriggerEvent('rz-prop:AddPropByName', prop)
-
         MainFuncs.AnimNoCancel(Anim[1], Anim[2])
 
-        -- TriggerEvent('rz-prop:DestroyPropsByName', prop)
         ClearPedTasks(PlayerPedId())
     end,
 }
