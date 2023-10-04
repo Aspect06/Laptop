@@ -1,0 +1,18 @@
+.main {
+    width: 60.9%;
+    height: 50vh;
+    overflow: scroll;
+    margin-top: 3%;
+    margin-left: 19.5%;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    .Name {
+        user-select: none;
+        color: white;
+        font-size: 2vh;
+        margin-left: 5%;
+    }
+}

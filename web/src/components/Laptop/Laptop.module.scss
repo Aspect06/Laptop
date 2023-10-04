@@ -1,0 +1,78 @@
+.main {
+    z-index: 0;
+
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    .laptop {
+        overflow: hidden;
+        width: 85%;
+        height: 90%;
+        bottom: -40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        position: absolute;
+        background-color: rgb(41, 41, 41);
+        border: 0.5vh solid rgb(0, 0, 0);
+        border-radius: 0.5vh;
+
+        background-size: cover;
+        background-position: center;
+
+        opacity: 1;
+        transition: 1s;
+        z-index: -1;
+
+        .appContainers {
+            display: grid;
+            justify-content: left;
+            margin: 1vh;
+
+            .appIcon {
+                color: white;
+                width: 5vh;
+                height: 5vh;
+                border-radius: 0.6vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 1vh;
+                cursor: pointer;
+            }
+
+            .appName {
+                user-select: none;
+                font-family: "Inter";
+                font-size: 1.29vh;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 1.85vh;
+                text-align: center;
+            }
+        }
+
+        .navigationBar {
+            position: absolute;
+            display: flex;
+            margin-top: 85vh;
+            height: 5%;
+            width: 100%;
+            background-color: rgba(32, 32, 32, 0.75);
+
+            .TaskCont {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                position: absolute;
+            }
+        }
+    }
+}

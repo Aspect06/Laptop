@@ -1,0 +1,41 @@
+.Main {
+    // float: right;
+    position: absolute;
+    margin-left: 73.5%;
+    width: 23.5%;
+    height: 95.25%;
+
+    .NotificationContainer {
+        align-content: center;
+        width: 125%;
+        height: 10%;
+        border-radius: 2%;
+        margin-left: 0.75%;
+        background-color: rgb(59, 59, 59);
+
+        margin-bottom: 1%;
+        overflow: hidden;
+
+        .Icon {
+            display: flex;
+            border-radius: 0.6vh;
+            color: white;
+            width: 5vh;
+            height: 5vh;
+            justify-content: center;
+            align-items: center;
+            margin-right: 1vh;
+            cursor: pointer;
+        }
+
+        .NotificationHeader {
+            height: 35%;
+            width: 50%;
+        }
+
+        .NotificationContent {
+            height: 2.5vh;
+            width: 31vh;
+        }
+    }
+}

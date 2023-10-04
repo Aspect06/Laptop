@@ -1,0 +1,21 @@
+.main {
+    width: 91vh;
+    height: 50vh;
+    overflow: scroll;
+    margin-top: 3%;
+    margin-left: 7.5%;
+    
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    .Card {
+        min-width: 25vh;
+        max-width: 25vh;
+
+        min-height: 25vh;
+
+        background-color: #212121;
+        border-radius: 0.5vh;
+    }
+}

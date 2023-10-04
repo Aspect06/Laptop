@@ -1,0 +1,6 @@
+BoostingLocations = {
+    {
+        Coords = '',
+        Area = ''
+    }
+}

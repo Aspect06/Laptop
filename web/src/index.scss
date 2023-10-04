@@ -1,0 +1,108 @@
+:root {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  overflow: hidden;
+  background-color: transparent !important;
+  line-height: inherit;
+  margin: 0px;
+}
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  border-width: 0;
+  border-style: solid;
+  border-color: #e5e7eb;
+}
+
+input[type=number] {
+  width: 100%;
+  height: 100%;
+  color: #FFFFFF;
+
+  background-color: transparent;
+  border: none;
+  outline: none;
+
+  transition: all 0.2s ease-in-out;
+}
+
+input[type=color] {
+  //remove style
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #FF0039;
+  ;
+}
+
+input[type=text] {
+  width: 100%;
+  height: 100%;
+  text-align: start;
+  color: #FFFFFF;
+
+  background-color: transparent;
+  border: none;
+
+  transition: all 0.2s ease-in-out;
+}
+
+input[type=text]:focus {
+  outline: none;
+}
+
+textarea {
+  font-family: "Inter";
+  font-size: 1.29vh;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 120%;
+
+  appearance: none;
+  background: transparent;
+
+  color: #FFFFFF;
+
+  border: none;
+
+  resize: none;
+}
+
+textarea:focus {
+  outline: none;
+}
+
+textarea::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
