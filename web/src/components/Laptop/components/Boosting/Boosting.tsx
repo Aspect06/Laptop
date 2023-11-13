@@ -6,15 +6,18 @@ import { fetchNui } from "../../../../hooks/fetchNui";
 import { Zoom, Typography, IconButton, Button, CircularProgress, LinearProgress } from "@mui/material";
 import { Contract } from './Contract/Contract'
 
-export const Boosting: React.FC = () => {
+export const Boosting: React.FC<{
+    MinimizedApps: any
+}> = (props) => {
     const [navigationState, setNavigationState] = useNavigationState();
+    const [queueText, setQueueText] = useState('Join Queue');
+    const [joiningQueue, setJoiningQueue] = useState(false);
+    const [selectedTab, setSelectedTab] = useState('Contracts')
     const [boostingData, setBoostingData] = useState({
         Level: 'D',
         ProgLevel: 'C',
         Progress: 22
     });
-    const [queueText, setQueueText] = useState('Join Queue');
-    const [joiningQueue, setJoiningQueue] = useState(false);
 
     const fetchData = async () => {
         const result = await fetchNui('aspect_laptop:boostingData')
@@ -65,14 +68,14 @@ export const Boosting: React.FC = () => {
                             </Typography>
 
                             <IconButton
-                                className={styles.button}
                                 style={{
-                                    marginLeft: "93%",
+                                    marginLeft: "91%",
                                     height: "3vh",
                                     width: "3vh"
                                 }}
 
                                 onClick={() => {
+                                    props.MinimizedApps['Boosting'] = true
                                     setNavigationState({
                                         path: 'Home',
                                     });
@@ -82,9 +85,28 @@ export const Boosting: React.FC = () => {
                                     style={{
                                         fontSize: "2vh"
                                     }}
-                                    className={
-                                        "fa-solid fa-xmark"
-                                    }
+                                    className={"fa-solid fa-minus"}
+                                />
+                            </IconButton>
+
+                            <IconButton
+                                style={{
+                                    height: "3vh",
+                                    width: "3vh"
+                                }}
+
+                                onClick={() => {
+                                    props.MinimizedApps['Boosting'] = false
+                                    setNavigationState({
+                                        path: 'Home',
+                                    });
+                                }}
+                            >
+                                <i
+                                    className={"fa-solid fa-xmark"}
+                                    style={{
+                                        fontSize: "2vh"
+                                    }}
                                 />
                             </IconButton>
                         </section>
@@ -144,64 +166,104 @@ export const Boosting: React.FC = () => {
                                 }
                                 {queueText}
                             </Button>
-                        </div>
 
-                        <div
-                            style={{
-                                marginTop: "2vh"
-                            }}
-                        >
-                            <Typography
+                            <Button
+                                variant={selectedTab === 'Contracts' ? 'contained' : 'text'}
                                 style={{
-                                    float: "left",
+                                    float: 'left',
+                                    fontFamily: "Inter",
                                     marginLeft: "2vh",
-                                    marginTop: "-1vh",
-                                    color: "#fff",
-                                    fontSize: "1.75vh",
-                                    userSelect: 'none'
+                                    height: "4vh",
+                                    width: "12.5vh",
+                                    fontSize: "1.5vh",
+                                    color: 'white',
+                                    borderRadius: "0.25vh",
+                                    backgroundColor: selectedTab === 'Contracts' ? '#181820' : 'transparent'
                                 }}
+                                onClick={() => setSelectedTab('Contracts')}
                             >
-                                {boostingData.Level}
-                            </Typography>
+                                Contracts
+                            </Button>
 
-                            <div
-                                className={styles.Progress}
+                            <Button
+                                variant={selectedTab === 'Auctions' ? 'contained' : 'text'}
                                 style={{
-                                    height: "0.5vh",
-                                    width: "92.5%",
-                                    marginLeft: "5vh",
-                                    borderRadius: "1vh",
-                                    color: "white",
-                                    fontSize: "2vh"
+                                    float: 'left',
+                                    fontFamily: "Inter",
+                                    marginLeft: "1vh",
+                                    height: "4vh",
+                                    width: "12.5vh",
+                                    fontSize: "1.5vh",
+                                    color: 'white',
+                                    borderRadius: "0.25vh",
+                                    backgroundColor: selectedTab === 'Auctions' ? '#181820' : 'transparent'
                                 }}
+                                onClick={() => setSelectedTab('Auctions')}
                             >
-
-                                <LinearProgress
-                                    style={{
-                                        borderRadius: 5,
-                                        height: "0.5vh",
-                                        width: "100%"
-                                    }}
-                                    variant="determinate"
-                                    value={boostingData.Progress}
-                                />
-                            </div>
-
-                            <Typography
-                                style={{
-                                    float: "right",
-                                    marginRight: "2%",
-                                    marginTop: "-1%",
-                                    color: "#fff",
-                                    fontSize: "1.75vh",
-                                    userSelect: 'none'
-                                }}
-                            >
-                                {boostingData.ProgLevel}
-                            </Typography>
+                                Auctions
+                            </Button>
                         </div>
 
-                        <Contract/>
+                        {selectedTab === 'Contracts' &&
+                            <>
+                                <div
+                                    style={{
+                                        marginTop: "2vh"
+                                    }}
+                                >
+                                    <Typography
+                                        style={{
+                                            float: "left",
+                                            marginLeft: "2vh",
+                                            marginTop: "-1vh",
+                                            color: "#fff",
+                                            fontSize: "1.75vh",
+                                            userSelect: 'none'
+                                        }}
+                                    >
+                                        {boostingData.Level}
+                                    </Typography>
+
+                                    <div
+                                        className={styles.Progress}
+                                        style={{
+                                            height: "0.5vh",
+                                            width: "92.5%",
+                                            marginLeft: "5vh",
+                                            borderRadius: "1vh",
+                                            color: "white",
+                                            fontSize: "2vh"
+                                        }}
+                                    >
+
+                                        <LinearProgress
+                                            style={{
+                                                borderRadius: 5,
+                                                height: "0.5vh",
+                                                width: "100%"
+                                            }}
+                                            variant="determinate"
+                                            value={boostingData.Progress}
+                                        />
+                                    </div>
+
+                                    <Typography
+                                        style={{
+                                            float: "right",
+                                            marginRight: "2%",
+                                            marginTop: "-1%",
+                                            color: "#fff",
+                                            fontSize: "1.75vh",
+                                            userSelect: 'none'
+                                        }}
+                                    >
+                                        {boostingData.ProgLevel}
+                                    </Typography>
+                                </div>
+
+                                <Contract />
+                            </>
+                        }
                     </div>
                 </Draggable>
             </div>

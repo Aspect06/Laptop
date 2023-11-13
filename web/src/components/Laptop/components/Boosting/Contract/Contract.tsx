@@ -225,6 +225,15 @@ export const Contract: React.FC = () => {
                                                             style={{
                                                                 fontSize: "1.5vh",
                                                             }}
+                                                        >
+                                                            Auction Contract
+                                                        </Button>
+                                                        <Button
+                                                            variant="contained"
+                                                            className={styles.ActionButton}
+                                                            style={{
+                                                                fontSize: "1.5vh",
+                                                            }}
                                                             onClick={() => {
                                                                 setDialogDecline({
                                                                     title: 'Decline contract ' + data.Class + ' class vehicle ' + data.Model + ' Contract Id ' + data.Id,

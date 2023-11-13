@@ -8,7 +8,8 @@ import Draggable from "react-draggable";
 
 export const Settings: React.FC<{
     currentWallpaper: string,
-    darkFont: boolean
+    darkFont: boolean,
+    MinimizedApps: any
 }> = (props) => {
     const [navigationState, setNavigationState] = useNavigationState();
 
@@ -52,15 +53,37 @@ export const Settings: React.FC<{
                             </Typography>
 
                             <IconButton
+                                style={{
+                                    marginLeft: "91%",
+                                    height: "3vh",
+                                    width: "3vh"
+                                }}
+
+                                onClick={() => {
+                                    props.MinimizedApps['Settings'] = true
+                                    setNavigationState({
+                                        path: 'Home',
+                                    });
+                                }}
+                            >
+                                <i
+                                    style={{
+                                        fontSize: "2vh"
+                                    }}
+                                    className={"fa-solid fa-minus"}
+                                />
+                            </IconButton>
+
+                            <IconButton
                                 className={styles.button}
                                 onClick={() => {
+                                    props.MinimizedApps['Settings'] = false
                                     setNavigationState({
                                         path: 'Home',
                                     });
                                 }}
 
                                 style={{
-                                    marginLeft: "93%",
                                     height: "3vh",
                                     width: "3vh"
                                 }}

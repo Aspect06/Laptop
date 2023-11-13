@@ -19,12 +19,18 @@ export const theme = createTheme({
         MuiTooltip: {
             styleOverrides: {
                 tooltip: {
-                    fontSize: 16,
-                    backgroundColor: '#151515',
-                    border: '1px solid rgba(255, 255, 255, 0.23)',
-                    boxShadow: '0 0 10px #000'
-                }
+                    fontWeight: 500,
+                    fontSize: '1.75vh',
+                },
             }
         },
+
+        MuiButton: {
+            styleOverrides: {
+                root: {
+                    fontFamily: 'Inter',
+                }
+            }
+        }
     }
 })

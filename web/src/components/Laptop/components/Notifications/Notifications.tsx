@@ -1,7 +1,6 @@
 import { useState } from "react";
 import styles from "./Notification.module.scss";
 import { useNuiEvent } from "../../../../hooks/useNuiEvent";
-import { fetchNui } from "../../../../hooks/fetchNui";
 import Grid from '@mui/material/Grid';
 import { Slide, Fade, Button, Typography } from "@mui/material";
 
@@ -26,7 +25,9 @@ const Apps = [
     },
 ]
 
-export const Notifications: React.FC = () => {
+export const Notifications: React.FC<{
+    setCachedNotifications: any
+}> = (props) => {
     const [Notifications, setNotifications] = useState([]);
 
     const addNotification = (Label: string, App: string) => {
@@ -36,7 +37,8 @@ export const Notifications: React.FC = () => {
             isRemoving: false
         };
         setNotifications(prevNotifications => [...prevNotifications, newNotification]);
-    
+        props.setCachedNotifications(prevNotifications => [...prevNotifications, newNotification])
+
         setTimeout(() => {
             setNotifications(prevNotifications =>
                 prevNotifications.map((notification, index) =>

@@ -63,7 +63,9 @@ function Item(index: number) {
     };
 }
 
-export const Gangs: React.FC = () => {
+export const Gangs: React.FC<{
+    MinimizedApps: any
+}> = (props) => {
     const [navigationState, setNavigationState] = useNavigationState();
     const [activeTab, setActiveTab] = useState();
     const [permissions, setManagePermissions] = useState(false);
@@ -294,14 +296,36 @@ export const Gangs: React.FC = () => {
                             </Typography>
 
                             <IconButton
-                                className={styles.button}
                                 style={{
-                                    marginLeft: "94.5%",
+                                    marginLeft: "91%",
                                     height: "3vh",
                                     width: "3vh"
                                 }}
 
                                 onClick={() => {
+                                    props.MinimizedApps['Gangs'] = true
+                                    setNavigationState({
+                                        path: 'Home',
+                                    });
+                                }}
+                            >
+                                <i
+                                    style={{
+                                        fontSize: "2vh"
+                                    }}
+                                    className={"fa-solid fa-minus"}
+                                />
+                            </IconButton>
+
+                            <IconButton
+                                className={styles.button}
+                                style={{
+                                    height: "3vh",
+                                    width: "3vh"
+                                }}
+
+                                onClick={() => {
+                                    props.MinimizedApps['Gangs'] = false
                                     setActiveTab(undefined);
                                     setNavigationState({
                                         path: 'Home',
