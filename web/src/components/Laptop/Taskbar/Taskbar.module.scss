@@ -1,0 +1,101 @@
+.taskbar {
+    z-index: 10;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 43px;
+    width: 100%;
+    background: rgba(24, 24, 24, 0.6);
+    backdrop-filter: blur(32px);
+    color: #FFF;
+    display: flex;
+    flex-direction: row;
+    padding-right: 0.6rem;
+
+    .mainIcons {
+        flex: auto;
+        display: flex;
+
+        .taskbarItem {
+            display: flex;
+            height: 45px;
+            width: 50px;
+            align-items: center;
+            justify-content: center;
+            margin-top: -1px;
+            user-select: none;
+
+            &:hover {
+                cursor: pointer;
+                background-color: #ffffff14;
+            }
+
+            .icon {
+                height: 24px;
+            }
+
+            .appIcon {
+                display: flex;
+                color: white;
+                height: 35px;
+                width: 37.5px;
+                border-radius: 0.3vh;
+                justify-content: center;
+                align-items: center;
+                margin-top: -1px;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .smallIcon {
+        height: 100%;
+        display: flex;
+        padding-right: 15px;
+        padding-left: 15px;
+        align-items: center;
+        justify-content: center;
+
+        &:hover {
+            cursor: pointer;
+            background-color: #ffffff14;
+        }
+    }
+
+    .systemTime {
+        display: flex;
+        font-size: 11px;
+        flex-basis: 63px;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        user-select: none;
+
+        p {
+            text-align: center;
+            color: #fff;
+            font-size: 11px;
+            margin: 0;
+            padding: 0;
+        }
+    }
+
+    .taskbarItem {
+        display: flex;
+        height: 45px;
+        width: 50px;
+        align-items: center;
+        justify-content: center;
+        user-select: none;
+        margin-top: -1px;
+
+        &:hover {
+            cursor: pointer;
+            background-color: #ffffff14;
+        }
+
+        .icon {
+            height: 24px;
+        }
+    }
+}

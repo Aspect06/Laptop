@@ -9,6 +9,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGear, faCar, faG } from "@fortawesome/free-solid-svg-icons";
 import { useNavigationState } from './atoms/navigation';
 
+import { NotificationHolder } from './NotificationHolder/NotificationHolder'
+import { Taskbar } from './Taskbar/Taskbar'
+
 import { Boosting } from "./components/Boosting/Boosting";
 import { Settings } from "./components/Settings/Settings";
 import { Gangs } from "./components/Gangs/Gangs";
@@ -20,7 +23,7 @@ const Apps = [
     {
         Name: 'Boosting',
         Icon: faCar,
-        Background: '#1d2029'
+        Background: '#1d2029',
     },
     {
         Name: 'Settings',
@@ -34,14 +37,22 @@ const Apps = [
     },
 ]
 
+const MinimizedApps = {
+    Boosting: false,
+    Settings: false,
+    Gangs: false,
+}
+
 export const Laptop: React.FC = () => {
     const [Open, setOpen] = useState(false);
+    const [notificationHolderState, setNotificationHolderState] = useState(false);
+    const [cachedNotifications, setCachedNotifications] = useState([]);
     const [navigationState, setNavigationState] = useNavigationState()
+    const [isInGang, setInGang] = useState(true);
     const [laptopData, setLaptopData] = useState({
         Wallpaper: 'https://cdn.discordapp.com/attachments/1144648749122076793/1144667642658050078/image.png',
         DarkMode: false
     })
-    const [isInGang, setInGang] = useState(true);
 
     const fetchData = async () => {
         if (!Open) { return; }
@@ -123,23 +134,13 @@ export const Laptop: React.FC = () => {
                         backgroundRepeat: 'no-repeat',
                     }}
                 >
-                    <div
-                        className={styles.navigationBar}
-                    >
-                        <div
-                            className={styles.TaskCont}
-                        >
+                    <NotificationHolder containerOpen={notificationHolderState} cachedNotifications={cachedNotifications} setCachedNotifications={setCachedNotifications} />
+                    <Taskbar Apps={Apps} setNotificationContainer={setNotificationHolderState} notificationHolderState={notificationHolderState} MinimizedApps={MinimizedApps} />
 
-                        </div>
-                    </div>
-
-                    <Notifications />
-                    <Boosting />
-                    <Settings
-                        currentWallpaper={laptopData.Wallpaper}
-                        darkFont={laptopData.DarkMode}
-                    />
-                    <Gangs />
+                    <Notifications setCachedNotifications={setCachedNotifications} />
+                    <Boosting MinimizedApps={MinimizedApps} />
+                    <Settings currentWallpaper={laptopData.Wallpaper} darkFont={laptopData.DarkMode} MinimizedApps={MinimizedApps} />
+                    <Gangs MinimizedApps={MinimizedApps} />
 
                     <div className={styles.appContainers}>
                         {Apps.map((app, index) => {
